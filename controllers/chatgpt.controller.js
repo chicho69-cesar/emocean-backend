@@ -14,10 +14,9 @@ const callChatGpt = async (req = request, res = response) => {
     let queryObj = {
       model: "gpt-3.5-turbo",
       messages: [
-        { "role": "user", "content": "Hola, me siento mal podrías darme algún consejo" },
         { "role": "user", "content": prompt }
       ],
-      // max_tokens: 200,
+      max_tokens: 500,
       temperature: 1
     }
 
@@ -62,7 +61,6 @@ const testSuggest = async (req = request, res = response) => {
     let queryObj = {
       model: "gpt-3.5-turbo",
       messages: [
-        { "role": "user", "content": "Hola, mi dia ha sido difícil" },
         { "role": "user", "content": prompt }
       ],
       // max_tokens: 200,
