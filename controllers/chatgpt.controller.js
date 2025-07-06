@@ -1,5 +1,5 @@
-const { response, request } = require("express");
-const { Configuration, OpenAIApi } = require("openai");
+import { response, request } from "express";
+import { Configuration, OpenAIApi } from "openai";
 
 const configuration = new Configuration({
   apiKey: process.env.OPENAI_API_KEY
@@ -7,7 +7,7 @@ const configuration = new Configuration({
 
 const openai = new OpenAIApi(configuration);
 
-const callChatGpt = async (req = request, res = response) => {
+export const callChatGpt = async (req = request, res = response) => {
   try {
     const { prompt } = req.body;
 
@@ -30,7 +30,7 @@ const callChatGpt = async (req = request, res = response) => {
   }
 }
 
-const dailySuggest = async (req = request, res = response) => {
+export const dailySuggest = async (req = request, res = response) => {
   try {
     const { prompt } = req.body;
 
@@ -54,7 +54,7 @@ const dailySuggest = async (req = request, res = response) => {
   }
 }
 
-const testSuggest = async (req = request, res = response) => {
+export const testSuggest = async (req = request, res = response) => {
   try {
     const { prompt } = req.body;
 
@@ -75,10 +75,4 @@ const testSuggest = async (req = request, res = response) => {
   } catch (error) {
     console.log(JSON.stringify(error));
   }
-}
-
-module.exports = {
-  callChatGpt,
-  dailySuggest,
-  testSuggest
 }
