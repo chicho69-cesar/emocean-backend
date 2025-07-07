@@ -1,6 +1,8 @@
 import express from 'express';
 import cors from 'cors';
 
+import router from '../routes/chatgpt.route.js';
+
 export class Server {
   constructor() {
     this.app = express();
@@ -29,12 +31,12 @@ export class Server {
   }
 
   routes() {
-    this.app.use(this.paths.apigpt, require('../routes/chatgpt.route'));
+    this.app.use(this.paths.apigpt, router);
   }
 
   listen() {
-    this.app.listen(this.port, () => {
-      console.log('Servidor corriendo en puerto ', this.port);
+    this.app.listen(this.port, '0.0.0.0', () => {
+      console.log('Server running ', this.port);
     })
   }
 }
